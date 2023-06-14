@@ -59,7 +59,7 @@ public class modeAddition extends JFrame implements ActionListener{
         check.setSize(100,30);
         check.setLocation(200,120);
         check.addActionListener(e-> {
-            System.out.println(answer + num1 + num2 + txtAns.getText());
+            answer = Integer.valueOf(num1) + Integer.valueOf(num2);
             if (answer == Integer.valueOf(txtAns.getText())){
                 this.getContentPane().setBackground(Color.green);
                 JOptionPane.showMessageDialog(null, "Correct!", "Result",1);

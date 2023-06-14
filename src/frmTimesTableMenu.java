@@ -40,7 +40,13 @@ public class frmTimesTableMenu extends JFrame implements ActionListener{
         //go button
         JButton launch = new JButton("Launch");
         launch.setBackground(app.clrTTMenu);
-        launch.addActionListener(e->{});
+        launch.addActionListener(e->{
+            this.dispose();
+            modeTT modTT = new modeTT(Integer.valueOf(txtTTNum.getText()));
+            modTT.setSize(400,290);
+            modTT.setVisible(true);
+
+        });
         launch.setSize(100, 30);
         launch.setLocation(300, 48);
 
