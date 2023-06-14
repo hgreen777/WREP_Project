@@ -27,4 +27,27 @@ public class modFunction {
         }
         return result;
     }
+
+    public Integer isBigger(int num1, int num2, boolean isbigger){
+        int result;
+        if (isbigger == true){
+            if (num1 > num2){
+                result = 1;
+            } else if(num2> num1){
+                result = 2;
+            } else{
+                result = 3;
+            }
+        }else{
+            if (num1 < num2){
+                result = 1;
+            } else if(num2 < num1){
+                result = 2;
+            } else{
+                result = 3;
+            }
+        }
+
+        return result;
+    }
 }

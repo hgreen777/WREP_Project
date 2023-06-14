@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import java.util.concurrent.TimeUnit;
 import java.lang.InterruptedException;
 
-public class modeAddition extends JFrame implements ActionListener{
+public class modeSubtraction extends JFrame implements ActionListener{
     App app = new App();
     modFunction funct = new modFunction();
     int answer;
@@ -16,10 +16,10 @@ public class modeAddition extends JFrame implements ActionListener{
     String num2;
     
     //500x200
-    modeAddition(int max){
+    modeSubtraction(int max){
         //Sets General window Components
         this.setLayout(null);
-        this.setTitle("Addition");
+        this.setTitle("Subtraction");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.getContentPane().setBackground(app.clrbtnAdd);
 
@@ -34,7 +34,7 @@ public class modeAddition extends JFrame implements ActionListener{
         });
 
         //Title Label
-        JLabel title = new JLabel("Add these 2 numbers.");
+        JLabel title = new JLabel("Subtract these 2 numbers.");
         title.setFont(new Font("Ariel",Font.PLAIN,20));
         title.setBounds(0, 0, 500, 30);
         title.setHorizontalAlignment(JLabel.CENTER);
@@ -47,7 +47,7 @@ public class modeAddition extends JFrame implements ActionListener{
         lblQuestion.setBounds(15,30,300,100);
         num1 = funct.RandInt(max);
         num2 = funct.RandInt(max);
-        lblQuestion.setText(num1 + " + " + num2 + " = ");
+        lblQuestion.setText(num1 + " - " + num2 + " = ");
         
         //TextField Answer
         JTextField txtAns = new JTextField();
@@ -59,21 +59,21 @@ public class modeAddition extends JFrame implements ActionListener{
         check.setSize(100,30);
         check.setLocation(200,120);
         check.addActionListener(e-> {
-            System.out.println(answer + num1 + num2 + txtAns.getText());
+            answer = Integer.parseInt(num1) - Integer.parseInt(num2);
             if (answer == Integer.valueOf(txtAns.getText())){
                 this.getContentPane().setBackground(Color.green);
                 JOptionPane.showMessageDialog(null, "Correct!", "Result",1);
                 this.dispose();
-                modeAddition modeAddition = new modeAddition(max);
-                modeAddition.setSize(500,200);
-                modeAddition.setVisible(true);
+                modeSubtraction modeSub = new modeSubtraction(max);
+                modeSub.setSize(500,200);
+                modeSub.setVisible(true);
             }else{
                 this.getContentPane().setBackground(Color.red);
                 JOptionPane.showMessageDialog(null, "Incorrect!", "Result",1);
                 this.dispose();
-                modeAddition modeAddition = new modeAddition(max);
-                modeAddition.setSize(500,200);
-                modeAddition.setVisible(true);
+                modeSubtraction modeSub = new modeSubtraction(max);
+                modeSub.setSize(500,200);
+                modeSub.setVisible(true);
             }
         });
 

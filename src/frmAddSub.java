@@ -7,8 +7,7 @@ import java.awt.event.ActionListener;
 
 public class frmAddSub extends JFrame implements ActionListener{
     App app = new App();
-    modeAddition addMenu = new modeAddition();
-
+    int max;
     
     // 500 x 150
     frmAddSub(){
@@ -30,8 +29,9 @@ public class frmAddSub extends JFrame implements ActionListener{
         });
 
         //Title
+        max = 10;
         JLabel label = new JLabel();
-        label.setText("Numbers are <= " + app.intMaxNum);
+        label.setText("Numbers are <= " + max);
         label.setFont(new Font("Ariel",Font.PLAIN,12));
         label.setBounds(300, 5, 180, 30);
         label.setHorizontalAlignment(JLabel.CENTER);
@@ -40,14 +40,14 @@ public class frmAddSub extends JFrame implements ActionListener{
         JButton btnToggle = new JButton();
         btnToggle.setText("Make numbers harder");
         btnToggle.addActionListener(e-> {
-            if(app.intMaxNum == 10){
-                app.intMaxNum = 100;
+            if(max == 10){
+                max = 100;
                 btnToggle.setText("Make numbers easier");
             }else{
-                app.intMaxNum = 10;
+                max = 10;
                 btnToggle.setText("Make numbers harder");
             }
-            label.setText("Numbers are <= " + app.intMaxNum);
+            label.setText("Numbers are <= " + max);
         });
         btnToggle.setSize(175,50);
         btnToggle.setLocation(300,35);
@@ -57,7 +57,9 @@ public class frmAddSub extends JFrame implements ActionListener{
         btnAddition.setFont(new Font("Ariel", Font.BOLD, 15));
         btnAddition.setBackground(app.clrbtnAdd);
         btnAddition.addActionListener(e-> {
-            addMenu.setSize(500,400);
+            this.dispose();
+            modeAddition addMenu = new modeAddition(max);
+            addMenu.setSize(500,200);
             addMenu.setVisible(true);
         });
         btnAddition.setSize(200, 40);
@@ -67,7 +69,12 @@ public class frmAddSub extends JFrame implements ActionListener{
         JButton btnSubtraction = new JButton("Subtraction (-)");
         btnSubtraction.setFont(new Font("Ariel", Font.BOLD, 15));
         btnSubtraction.setBackground(app.clrbtnAdd);
-        btnSubtraction.addActionListener(e-> {});
+        btnSubtraction.addActionListener(e-> {
+            this.dispose();
+            modeSubtraction modeSub = new modeSubtraction(max);
+            modeSub.setSize(500, 200);
+            modeSub.setVisible(true);
+        });
         btnSubtraction.setSize(200, 40);
         btnSubtraction.setLocation(80, 60);
 

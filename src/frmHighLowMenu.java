@@ -37,13 +37,23 @@ public class frmHighLowMenu extends JFrame implements ActionListener{
         //Higher button
         JButton btnHigher = new JButton("Higher");
         btnHigher.setBackground(app.clrLightRed);
-        btnHigher.addActionListener(e->{});
+        btnHigher.addActionListener(e->{
+            this.dispose();
+            modeHigher modHigh = new modeHigher();
+            modHigh.setSize(500,200);
+            modHigh.setVisible(true);
+        });
         btnHigher.setSize(100, 45);
         btnHigher.setLocation(100, 60);
         //Lower button
         JButton btnLower = new JButton("Lower");
         btnLower.setBackground(app.clrLightGreen);
-        btnLower.addActionListener(e->{});
+        btnLower.addActionListener(e->{
+            this.dispose();
+            modeLower modLow = new modeLower();
+            modLow.setSize(500,200);
+            modLow.setVisible(true);
+        });
         btnLower.setSize(100, 45);
         btnLower.setLocation(300, 60);
 

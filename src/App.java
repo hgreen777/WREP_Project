@@ -15,12 +15,11 @@ public class App {
     Color clrLightRed = new Color(242,124,124);
     Color clrLightGreen = new Color(197,224, 180);
 
-    public int intMaxNum = 10;
 
     public static void main(String[] args) throws Exception {
         frmMainMenu mainMenu = new frmMainMenu();
         mainMenu.setSize(550,350);
         mainMenu.setVisible(true);
     }
-
+    
 }
