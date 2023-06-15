@@ -50,4 +50,22 @@ public class modFunction {
 
         return result;
     }
+
+    //Presence and type check data validation
+    public boolean dataValidation(String input){
+        boolean result;
+
+        if (input.isEmpty()){
+            result = false;
+        }else{
+            try{
+                Integer.parseInt(input);
+                result = true;
+            }catch (NumberFormatException e){
+                result = false;
+            }
+        }
+
+        return result;
+    }
 }

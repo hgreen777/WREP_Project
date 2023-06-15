@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 public class frmTimesTableMenu extends JFrame implements ActionListener{
     App app = new App();
+    modFunction funct = new modFunction();
     
     frmTimesTableMenu(){
         //Sets General window Components
@@ -41,11 +42,17 @@ public class frmTimesTableMenu extends JFrame implements ActionListener{
         JButton launch = new JButton("Launch");
         launch.setBackground(app.clrTTMenu);
         launch.addActionListener(e->{
-            this.dispose();
-            modeTT modTT = new modeTT(Integer.valueOf(txtTTNum.getText()));
-            modTT.setSize(400,290);
-            modTT.setVisible(true);
-
+            boolean passedValidation;
+            passedValidation = funct.dataValidation(txtTTNum.getText());
+            if (passedValidation == true){
+                this.dispose();
+                modeTT modTT = new modeTT(Integer.valueOf(txtTTNum.getText()));
+                modTT.setSize(400,320);
+                modTT.setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(null, "Input is either not a number or has not been filled in", "Error",1);
+            }
+            
         });
         launch.setSize(100, 30);
         launch.setLocation(300, 48);

@@ -59,21 +59,27 @@ public class modeAddition extends JFrame implements ActionListener{
         check.setSize(100,30);
         check.setLocation(200,120);
         check.addActionListener(e-> {
-            answer = Integer.valueOf(num1) + Integer.valueOf(num2);
-            if (answer == Integer.valueOf(txtAns.getText())){
-                this.getContentPane().setBackground(Color.green);
-                JOptionPane.showMessageDialog(null, "Correct!", "Result",1);
-                this.dispose();
-                modeAddition modeAddition = new modeAddition(max);
-                modeAddition.setSize(500,200);
-                modeAddition.setVisible(true);
+            Boolean passedValidation = funct.dataValidation(txtAns.getText());
+            
+            if (passedValidation == true){
+                answer = Integer.valueOf(num1) + Integer.valueOf(num2);
+                if (answer == Integer.valueOf(txtAns.getText())){
+                    this.getContentPane().setBackground(Color.green);
+                    JOptionPane.showMessageDialog(null, "Correct!", "Result",1);
+                    this.dispose();
+                    modeAddition modeAddition = new modeAddition(max);
+                    modeAddition.setSize(500,200);
+                    modeAddition.setVisible(true);
+                }else{
+                    this.getContentPane().setBackground(Color.red);
+                    JOptionPane.showMessageDialog(null, "Incorrect!", "Result",1);
+                    this.dispose();
+                    modeAddition modeAddition = new modeAddition(max);
+                    modeAddition.setSize(500,200);
+                    modeAddition.setVisible(true);
+                }
             }else{
-                this.getContentPane().setBackground(Color.red);
-                JOptionPane.showMessageDialog(null, "Incorrect!", "Result",1);
-                this.dispose();
-                modeAddition modeAddition = new modeAddition(max);
-                modeAddition.setSize(500,200);
-                modeAddition.setVisible(true);
+                JOptionPane.showMessageDialog(null, "Input is either not a number or has not been filled in", "Error",1);
             }
         });
 

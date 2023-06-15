@@ -59,21 +59,27 @@ public class modeSubtraction extends JFrame implements ActionListener{
         check.setSize(100,30);
         check.setLocation(200,120);
         check.addActionListener(e-> {
-            answer = Integer.parseInt(num1) - Integer.parseInt(num2);
-            if (answer == Integer.valueOf(txtAns.getText())){
-                this.getContentPane().setBackground(Color.green);
-                JOptionPane.showMessageDialog(null, "Correct!", "Result",1);
-                this.dispose();
-                modeSubtraction modeSub = new modeSubtraction(max);
-                modeSub.setSize(500,200);
-                modeSub.setVisible(true);
+            Boolean passedValidation = funct.dataValidation(txtAns.getText());
+            
+            if (passedValidation == true){
+                answer = Integer.parseInt(num1) - Integer.parseInt(num2);
+                if (answer == Integer.valueOf(txtAns.getText())){
+                    this.getContentPane().setBackground(Color.green);
+                    JOptionPane.showMessageDialog(null, "Correct!", "Result",1);
+                    this.dispose();
+                    modeSubtraction modeSub = new modeSubtraction(max);
+                    modeSub.setSize(500,200);
+                    modeSub.setVisible(true);
+                }else{
+                    this.getContentPane().setBackground(Color.red);
+                    JOptionPane.showMessageDialog(null, "Incorrect!", "Result",1);
+                    this.dispose();
+                    modeSubtraction modeSub = new modeSubtraction(max);
+                    modeSub.setSize(500,200);
+                    modeSub.setVisible(true);
+                }
             }else{
-                this.getContentPane().setBackground(Color.red);
-                JOptionPane.showMessageDialog(null, "Incorrect!", "Result",1);
-                this.dispose();
-                modeSubtraction modeSub = new modeSubtraction(max);
-                modeSub.setSize(500,200);
-                modeSub.setVisible(true);
+                JOptionPane.showMessageDialog(null, "Input is either not a number or has not been filled in", "Error",1);
             }
         });
 

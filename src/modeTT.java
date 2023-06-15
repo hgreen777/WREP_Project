@@ -9,6 +9,7 @@ import java.util.Random;
 
 public class modeTT  extends JFrame implements ActionListener{
     App app = new App();
+    modFunction funct = new modFunction();
     JButton btnCheck;
     int count;
     
@@ -39,139 +40,56 @@ public class modeTT  extends JFrame implements ActionListener{
         title.setVerticalAlignment(JLabel.TOP);
 
         //**All question Labels*/
-        //Question 0
-        JLabel q0 = new JLabel();
-        q0.setText(num + " x  0 = ");
-        q0.setFont(new Font("Ariel",Font.PLAIN,20));
-        q0.setBounds(20, 30, 80, 30);
-
-        //Question 1
-        JLabel q1 = new JLabel();
-        q1.setText(num + " x  1 = ");
-        q1.setFont(new Font("Ariel",Font.PLAIN,20));
-        q1.setBounds(20, 60, 80, 30);
-
-        //Question 2
-        JLabel q2 = new JLabel();
-        q2.setText(num + " x  2 = ");
-        q2.setFont(new Font("Ariel",Font.PLAIN,20));
-        q2.setBounds(20, 90, 80, 30);
-
-        //Question 3
-        JLabel q3 = new JLabel();
-        q3.setText(num + " x  3 = ");
-        q3.setFont(new Font("Ariel",Font.PLAIN,20));
-        q3.setBounds(20, 120, 80, 30);
-
-        //Question 4
-        JLabel q4 = new JLabel();
-        q4.setText(num + " x  4 = ");
-        q4.setFont(new Font("Ariel",Font.PLAIN,20));
-        q4.setBounds(20, 150, 80, 30);
-
-        //Question 5
-        JLabel q5 = new JLabel();
-        q5.setText(num + " x  5 = ");
-        q5.setFont(new Font("Ariel",Font.PLAIN,20));
-        q5.setBounds(20, 180, 80, 30);
-
-        //Question 6
-        JLabel q6 = new JLabel();
-        q6.setText(num + " x  6 = ");
-        q6.setFont(new Font("Ariel",Font.PLAIN,20));
-        q6.setBounds(20, 210, 80, 30);
-
-        // **Row 2**
-        //Question 7
-        JLabel q7 = new JLabel();
-        q7.setText(num + " x  7 = ");
-        q7.setFont(new Font("Ariel",Font.PLAIN,20));
-        q7.setBounds(200, 30, 80, 30);
         
-        //Question 8
-        JLabel q8 = new JLabel();
-        q8.setText(num + " x  8 = ");
-        q8.setFont(new Font("Ariel",Font.PLAIN,20));
-        q8.setBounds(200, 60, 80, 30);
+        JLabel[] questions = new JLabel[13];
+        JTextField[] txtAns = new JTextField[13];
+        int[] answers = new int[13];
 
-        //Question 9
-        JLabel q9 = new JLabel();
-        q9.setText(num + " x  9 = ");
-        q9.setFont(new Font("Ariel",Font.PLAIN,20));
-        q9.setBounds(200, 90, 80, 30);
-
-        //Question 10
-        JLabel q10 = new JLabel();
-        q10.setText(num + " x  10 = ");
-        q10.setFont(new Font("Ariel",Font.PLAIN,17));
-        q10.setBounds(200, 120, 80, 30);
-
-        //Question 11
-        JLabel q11 = new JLabel();
-        q11.setText(num + " x  11 = ");
-        q11.setFont(new Font("Ariel",Font.PLAIN,17));
-        q11.setBounds(200, 150, 80, 30);
-
-        //Question 12
-        JLabel q12 = new JLabel();
-        q12.setText(num + " x  12 = ");
-        q12.setFont(new Font("Ariel",Font.PLAIN,17));
-        q12.setBounds(200, 180, 80, 25);
-
-
-        //**Text Object */
-        //Q0 AnswerBox
-        JTextField txtq0 = new JTextField();
-        txtq0.setBounds(100,30, 80, 30);
-
-        //Q1 AnswerBox
-        JTextField txtq1 = new JTextField();
-        txtq1.setBounds(100,60, 80, 30);
-
-        //Q2 AnswerBox
-        JTextField txtq2 = new JTextField();
-        txtq2.setBounds(100,90, 80, 30);
-
-        //Q3 AnswerBox
-        JTextField txtq3 = new JTextField();
-        txtq3.setBounds(100,120, 80, 30);
-
-        //Q4 AnswerBox
-        JTextField txtq4 = new JTextField();
-        txtq4.setBounds(100,150, 80, 30);
-
-        //Q5 AnswerBox
-        JTextField txtq5 = new JTextField();
-        txtq5.setBounds(100,180, 80, 30);
-
-        //Q6 AnswerBox
-        JTextField txtq6 = new JTextField();
-        txtq6.setBounds(100,210, 80, 30);
-
-        //** Row 2 */
-        //Q7 AnswerBox
-        JTextField txtq7 = new JTextField();
-        txtq7.setBounds(280,30, 80, 30);
-
-        //Q8 AnswerBox
-        JTextField txtq8 = new JTextField();
-        txtq8.setBounds(280,60, 80, 30);
-
-        //Q9 AnswerBox
-        JTextField txtq9 = new JTextField();
-        txtq9.setBounds(280,90, 80, 30);
-
-        //Q1 AnswerBox
-        JTextField txtq10 = new JTextField();
-        txtq10.setBounds(280,120, 80, 30);
-
-        //Q1 AnswerBox
-        JTextField txtq11 = new JTextField();
-        txtq11.setBounds(280,150, 80, 30);
-
-        //Q1 AnswerBox
-        JTextField txtq12 = new JTextField();
-        txtq12.setBounds(280,180, 80, 30);
+        for (int i = 0; i <= 12; i ++){
+            questions[i] = new JLabel();
+            txtAns[i] = new JTextField();
+            answers[i] = num * i;
+            
+            questions[i].setText(num + " x " + i + " = ");
+            questions[i].setFont(new  Font("Ariel",Font.PLAIN,17));
+            
+            if(i == 0){
+                questions[i].setBounds(20,30,80,30);
+                txtAns[i].setBounds(100,30,80,30);
+            } else if(i> 0 && i< 8){
+                questions[i].setBounds(20,(i*30)+30,80,30);
+                txtAns[i].setBounds(100,(i*30)+30,80,30);
+            }else{
+                switch(i){
+                    case 8:
+                        questions[i].setBounds(200,30,80,30);
+                        txtAns[i].setBounds(280,30,80,30);
+                        break;
+                    case 9:
+                        questions[i].setBounds(200,60,80,30);
+                        txtAns[i].setBounds(280,60,80,30);
+                        break;
+                    case 10:
+                        questions[i].setBounds(200,90,80,30);
+                        txtAns[i].setBounds(280,90,80,30);
+                        break;
+                    case 11:
+                        questions[i].setBounds(200,120,80,30);
+                        txtAns[i].setBounds(280,120,80,30);
+                        break;
+                    case 12:
+                        questions[i].setBounds(200,150,80,30);
+                        txtAns[i].setBounds(280,150,80,30);
+                        break;
+                    case 13:
+                        questions[i].setBounds(200,180,80,30);
+                        txtAns[i].setBounds(280,180,80,30);
+                        break;
+                }
+            }
+            this.add(questions[i]);
+            this.add(txtAns[i]);
+        }
 
         
         //Check Button 
@@ -179,31 +97,37 @@ public class modeTT  extends JFrame implements ActionListener{
         btnCheck.setSize(100,30);
         btnCheck.setLocation(210,210);
         btnCheck.addActionListener(e -> {
-            /* 
-            int[] userAnswers = {Integer.valueOf(txtq0.getText()), Integer.valueOf(txtq2.getText()), Integer.valueOf(txtq3.getText()), Integer.valueOf(txtq3.getText()), Integer.valueOf(txtq5.getText()), Integer.valueOf(txtq6.getText()), Integer.valueOf(txtq7.getText()), Integer.valueOf(txtq8.getText()), Integer.valueOf(txtq9.getText()), Integer.valueOf(txtq10.getText()), Integer.valueOf(txtq11.getText()), Integer.valueOf(txtq12.getText())};
-            int[] answers = new int[12];
-            for(int i = 0; i <= 11; i++){
-                if (i == 11){
-                    answers[i] = num * i;
-                    answers[i+1] = num * i+1;
+            boolean passedValidation = false;
+            int failedValidation = 0;
+            int counter = 0;
+            int[] userAnswers = new int[13];
+            
+            for(int i = 0; i <=12; i++){
+                passedValidation = funct.dataValidation(txtAns[i].getText());
+                if (passedValidation == true){
+                    userAnswers[i] = Integer.valueOf(txtAns[i].getText());
+                    
+                    if(answers[i] == userAnswers[i]){
+                        counter += 1;
+                        txtAns[i].setBackground(Color.green);
+                    }else{
+                        txtAns[i].setBackground(Color.red);
+                    }
                 }else{
-                    answers[i] = num * i;
+                    failedValidation += 1;
                 }
-                if(userAnswers[i] == answers[i]){
-                    count += 1;
-                }
+
             }
-            System.out.println(userAnswers[1] + answers[1]);
-            JOptionPane.showMessageDialog(null, count + "/12 Correct", "Result",1);*/
+            if (failedValidation > 0){
+                JOptionPane.showMessageDialog(null, failedValidation + "/13 Have either not been completed or are not numbers. So cannot be checked. Please rectify this.", "Result",1);
+            }else{
+                JOptionPane.showMessageDialog(null, counter + "/13 Correct.", "Result",1);
+            }
         });
 
         this.add(back);this.add(title);
         this.add(btnCheck);
-        this.add(q1);this.add(q0);this.add(q2);this.add(q3);this.add(q4);this.add(q5);this.add(q6);
-        this.add(q7);this.add(q8);this.add(q9);this.add(q10);this.add(q11); this.add(q12);
-
-        this.add(txtq0);this.add(txtq1);this.add(txtq2); this.add(txtq3);this.add(txtq4);this.add(txtq5); this.add(txtq6);
-        this.add(txtq7);this.add(txtq8);this.add(txtq9); this.add(txtq10);this.add(txtq11);this.add(txtq12);
+        
     }
 
     @Override
